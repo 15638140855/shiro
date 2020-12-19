@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.shiro.mapper.UserLoginMapper">
+    <select id="UserLogin" parameterType="UserLogin" resultType="UserLogin">
+        select * from user_login
+        <where>
+            <if test="user_name != null and user_name != ''">
+                AND user_name =#{user_name}
+            </if>
+            <if test="user_pwd != null and user_pwd != ''">
+                AND user_pwd = #{user_pwd}
+            </if>
+            <if test="user_phone != null and user_phone != ''">
+                AND user_phone = #{user_phone}
+            </if>
+            <if test="user_email != null and user_email != ''">
+                AND user_email = #{user_email}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertUser" parameterType="UserLogin">
+        insert into user_login (
+        <if test="user_name != null and user_name != '' ">user_name,</if>
+        <if test="user_pwd != null and user_pwd != '' ">user_pwd,</if>
+        <if test="user_phone != null and user_phone != '' ">user_phone,</if>
+        <if test="user_email != null and user_email != '' ">user_email</if>
+        )values(
+        <if test="user_name != null and user_name != ''">#{user_name},</if>
+        <if test="user_pwd != null and user_pwd != ''">#{user_pwd},</if>
+        <if test="user_phone != null and user_phone != ''">#{user_phone},</if>
+        <if test="user_email != null and user_email != ''">#{user_email}</if>
+        )
+    </insert>
+</mapper>

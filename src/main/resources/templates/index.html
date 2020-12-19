@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页</title>
+
+</head>
+<body>
+<p><a th:href="@{/tologin}">denglu</a></p>
+<div shiro:hasPermission="user:add">
+<a th:text="msg"></a><br>
+</div>
+<div shiro:hasPermission="user:upd">
+<a th:href="@{/user/add}">add</a>!<a th:href="@{/user/upd}">upd</a>
+</div>
+</body>
+</html>
